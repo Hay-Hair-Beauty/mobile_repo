@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Hay</string>
     <string name="description_icon">Logo Aplikasi Hay</string>
+    <string name="img_login">gambar pada login activity</string>
+    <string name="title_login_activity">Login Page</string>
+    <string name="emailHint">Email</string>
+    <string name="passwordHint">Password</string>
+    <string name="btn_login">Login</string>
+    <string name="or">or</string>
+    <string name="info_register_account">Dont\'t have any account?</string>
+    <string name="register">Register</string>
+    <string name="btn_login_google">Continue with Google</string>
+    <string name="desc_login_google">Login menggunakan akun google</string>
 </resources>
