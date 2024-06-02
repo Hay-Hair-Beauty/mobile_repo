@@ -33,6 +33,7 @@
                     android:text="@string/title_login_activity"
                     android:textSize="28sp"
                     android:textStyle="bold"
+                    android:textColor="@color/gray"
                     android:fontFamily="@font/poppins_bold"
                     android:layout_marginStart="32dp"
                     android:layout_marginEnd="32dp"
@@ -63,6 +64,7 @@
                             android:layout_height="wrap_content"
                             android:ems="10"
                             android:inputType="textEmailAddress"
+                            android:textColor="@color/light_gray"
                             tools:ignore="SpeakableTextPresentCheck" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -93,6 +95,7 @@
                             android:layout_height="wrap_content"
                             android:ems="10"
                             android:inputType="textPassword"
+                            android:textColor="@color/light_gray"
                             tools:ignore="SpeakableTextPresentCheck" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -123,14 +126,14 @@
                     app:layout_constraintEnd_toStartOf="@+id/tvRedirectToRegister"
                     app:layout_constraintTop_toBottomOf="@+id/btnLogin"
                     android:layout_marginTop="16dp"
-                    android:layout_marginStart="80dp"/>
+                    android:layout_marginStart="75dp"/>
 
                 <TextView
                     android:id="@+id/tvRedirectToRegister"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="80dp"
+                    android:layout_marginEnd="75dp"
                     android:fontFamily="@font/poppins_medium"
                     android:text="@string/register"
                     android:textColor="@color/orange"

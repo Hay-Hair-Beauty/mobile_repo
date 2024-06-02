@@ -3,6 +3,7 @@
     <string name="description_icon">Logo Aplikasi Hay</string>
     <string name="img_login">gambar pada login activity</string>
     <string name="title_login_activity">Login Page</string>
+    <string name="title_register_activity">Register Page</string>
     <string name="emailHint">Email</string>
     <string name="passwordHint">Password</string>
     <string name="btn_login">Login</string>
@@ -11,4 +12,11 @@
     <string name="register">Register</string>
     <string name="btn_login_google">Continue with Google</string>
     <string name="desc_login_google">Login menggunakan akun google</string>
+    <string name="nameHint">Name</string>
+    <string name="phoneNumberHint">Phone Number</string>
+    <string name="confirmPasswordHint">Confirm Password</string>
+    <string name="btn_register">Register</string>
+    <string name="info_login_account">Have an account?</string>
+    <string name="login">Login</string>
+    <string name="title_verification_activity">Verification</string>
 </resources>

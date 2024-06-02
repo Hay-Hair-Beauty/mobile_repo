@@ -2,8 +2,11 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.Material3.Light.NoActionBar">
         <item name="android:windowBackground">@color/white</item>
-        <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowIsTranslucent">true</item>
+        <item name="colorPrimary">@color/orange</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowActivityTransitions">true</item>
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>

@@ -1,19 +1,23 @@
-package com.capstone.hay.view.login
+package com.capstone.hay.view.register
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowInsets
 import android.view.WindowManager
-import com.capstone.hay.databinding.ActivityLoginBinding
-import com.capstone.hay.view.register.RegisterActivity
+import com.capstone.hay.R
+import com.capstone.hay.databinding.ActivityRegisterBinding
+import com.capstone.hay.view.login.LoginActivity
 
-class LoginActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityLoginBinding
+    private lateinit var binding: ActivityRegisterBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         setupView()
         redirectToLogin()
@@ -25,8 +29,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun redirectToLogin() {
-        binding.tvRedirectToRegister.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+        binding.tvRedirectToLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }
