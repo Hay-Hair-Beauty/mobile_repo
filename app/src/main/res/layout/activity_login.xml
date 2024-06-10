@@ -31,7 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:text="@string/title_login_activity"
-                    android:textSize="28sp"
+                    android:textSize="32sp"
                     android:textStyle="bold"
                     android:textColor="@color/gray"
                     android:fontFamily="@font/poppins_bold"
@@ -55,8 +55,8 @@
                     app:layout_constraintTop_toBottomOf="@+id/titleLoginActivity"
                     app:startIconDrawable="@drawable/ic_email"
                     app:startIconTint="@color/light_gray"
-                    app:boxStrokeColor="@color/outlined_box_color"
-                    app:hintTextColor="@color/orange">
+                    app:boxStrokeColor="@color/light_gray"
+                    app:hintTextColor="@color/light_gray">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_login_email"
@@ -65,7 +65,7 @@
                             android:ems="10"
                             android:inputType="textEmailAddress"
                             android:textColor="@color/light_gray"
-                            tools:ignore="SpeakableTextPresentCheck" />
+                            tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,8 +86,8 @@
                     app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout"
                     app:startIconDrawable="@drawable/vector"
                     app:startIconTint="@color/light_gray"
-                    app:boxStrokeColor="@color/outlined_box_color"
-                    app:hintTextColor="@color/orange">
+                    app:boxStrokeColor="@color/light_gray"
+                    app:hintTextColor="@color/light_gray">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edLoginPassword"
@@ -100,46 +100,65 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:id="@+id/forgetPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/forgot_password"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="32dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/orange"
+                    android:layout_marginEnd="32dp"
+                    android:fontFamily="@font/poppins_medium"
+                    app:layout_constraintTop_toBottomOf="@id/passwordEditTextLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
                 <Button
                     android:id="@+id/btnLogin"
                     android:layout_width="0dp"
                     android:layout_height="56dp"
                     android:text="@string/btn_login"
                     android:backgroundTint="@color/orange"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="28dp"
                     android:layout_marginStart="72dp"
                     android:layout_marginEnd="72dp"
                     android:textSize="14sp"
+                    android:textColor="@color/spring_wood_color"
                     android:fontFamily="@font/poppins_semibold"
-                    app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/forgetPassword"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
 
-                <TextView
-                    android:id="@+id/tvInfoRegister"
+                <LinearLayout
+                    android:id="@+id/infoAccountLayout"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:textColor="@color/gray"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="@string/info_register_account"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/tvRedirectToRegister"
-                    app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginStart="75dp"/>
-
-                <TextView
-                    android:id="@+id/tvRedirectToRegister"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="75dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="@string/register"
-                    android:textColor="@color/orange"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvInfoRegister"
-                    app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+                    app:layout_constraintTop_toBottomOf="@+id/btnLogin">
+
+                        <TextView
+                            android:id="@+id/tvInfoRegister"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/info_register_account"
+                            android:layout_marginEnd="3dp"/>
+
+                        <TextView
+                            android:id="@+id/tvRedirectToRegister"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/register"
+                            android:textColor="@color/orange" />
+                </LinearLayout>
 
                 <View
                     android:id="@+id/leftLine"
@@ -148,7 +167,7 @@
                     android:background="@color/dark_gray"
                     app:layout_constraintEnd_toStartOf="@+id/textView"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvInfoRegister"
+                    app:layout_constraintTop_toBottomOf="@+id/infoAccountLayout"
                     android:layout_marginTop="32dp"
                     android:layout_marginEnd="16dp"/>
 
@@ -159,7 +178,7 @@
                     android:text="@string/or"
                     android:textColor="@color/dark_gray"
                     android:textSize="18sp"
-                    app:layout_constraintTop_toBottomOf="@+id/tvInfoRegister"
+                    app:layout_constraintTop_toBottomOf="@+id/infoAccountLayout"
                     app:layout_constraintStart_toEndOf="@+id/leftLine"
                     app:layout_constraintEnd_toStartOf="@+id/rightLine"
                     android:layout_marginTop="20dp"/>
@@ -171,18 +190,19 @@
                     android:background="@color/dark_gray"
                     app:layout_constraintStart_toEndOf="@+id/textView"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvInfoRegister"
+                    app:layout_constraintTop_toBottomOf="@+id/infoAccountLayout"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="32dp"/>
 
                 <Button
                     android:id="@+id/btnGoogleLogin"
                     style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="350dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:layout_marginStart="32dp"
                     android:layout_marginEnd="32dp"
+                    android:padding="12dp"
                     android:textColor="@color/black"
                     android:contentDescription="@string/desc_login_google"
                     android:text="@string/btn_login_google"

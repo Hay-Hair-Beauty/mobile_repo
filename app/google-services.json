@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "126780028253",
+    "project_id": "hay-hair-beauty",
+    "storage_bucket": "hay-hair-beauty.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126780028253:android:2bbb9fe63141b13c3124b4",
+        "android_client_info": {
+          "package_name": "com.capstone.hay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126780028253-tall5hab9d1mv1s5lfg1atp1ccd2d24d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB08GWOA2nBxc8nCWmKA1-BsUZm2Gyep-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107575542520395785847",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
