@@ -4,35 +4,53 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.activity.viewModels
 import com.capstone.hay.databinding.ActivitySplashBinding
+import com.capstone.hay.view.ViewModelFactory
 import com.capstone.hay.view.login.LoginActivity
+import com.capstone.hay.view.main.MainActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashBinding
-
+    private val viewModel by viewModels<SplashViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            navigateToMain()
+            checkLoginSession()
         }, 3000L)
 
         setupView()
         setupAnimation()
     }
 
+    private fun checkLoginSession() {
+        viewModel.getSession().observe(this) { user ->
+            if (user.isLogin) {
+                navigateToMain()
+            } else {
+                navigateToLogin()
+            }
+        }
+    }
+
+    private fun navigateToMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 
     private fun setupAnimation() {
         val firstAnimation = ObjectAnimator.ofFloat(binding.splashScreenImage, View.ALPHA, 1f).setDuration(1500)
@@ -43,7 +61,7 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToMain() {
+    private fun navigateToLogin() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()

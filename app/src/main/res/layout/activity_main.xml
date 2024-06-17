@@ -4,24 +4,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/spring_wood_color"
-    android:paddingTop="?attr/actionBarSize">
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:padding="12dp"
-        android:elevation="20dp"
-        app:compatShadowEnabled="true"
-        style="@style/BottomNavigationViewCustomStyle"
-        android:background="@drawable/bottom_navigation_shape"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_navigation_menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+    android:background="@color/spring_wood_color">
 
     <fragment
         android:id="@+id/nav_host_fragment_activity_main"
@@ -34,5 +17,23 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:padding="12dp"
+        android:elevation="40dp"
+        app:compatShadowEnabled="true"
+        style="@style/BottomNavigationViewCustomStyle"
+        android:background="@drawable/bottom_navigation_shape"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_navigation_menu"
+        app:itemIconTint="@color/color_selector"
+        app:itemTextColor="@color/color_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

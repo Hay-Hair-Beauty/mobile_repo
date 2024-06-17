@@ -54,4 +54,34 @@
     <string name="accept_dialog">Ok</string>
     <string name="progress">Silahkan Tunggu</string>
     <string name="list_title_history">All</string>
+    <string name="error_message_password">Password must be at least 8 characters</string>
+    <string name="error_message_email_input">Your email format is incorrect</string>
+    <string name="img_scan">Gambar scan</string>
+    <string name="no_media_selected">No media selected</string>
+    <string name="ok_result">Ok</string>
+    <string name="result">Result</string>
+    <string name="desc_image_news">Ini gambar content artikel</string>
+    <string name="language_menu">Language</string>
+    <string name="menu_app_media">App And Media</string>
+    <string name="redirect_to_language_menu">Pergi ke menu Bahasa</string>
+    <string name="present_user">Good Morning, %s</string>
+    <string name="desc_user">Let Hay Make Your Hair Sway!</string>
+    <string name="theme_menu">Theme</string>
+    <string name="menu_info_support">Info And Support</string>
+    <string name="about_us_menu">About Us</string>
+    <string name="menu_account_Settings">Account Settings</string>
+    <string name="password_and_security_menu">Password And Security</string>
+    <string name="menu_login">Login</string>
+    <string name="another_account_btn">Another Account</string>
+    <string name="logout_btn">Log Out</string>
+    <string name="about_us_text"><![CDATA[
+        <p>Introducing HairCare, an innovative app dedicated to addressing common hair issues such as hair loss, dandruff, scalp problems, and slow hair growth. The primary objective of HairCare is to raise awareness about hair health and offer tailored solutions for users\' specific concerns. Using advanced image classification technology, HairCare can detect signs of hair diseases and scalp issues, enabling personalized recommendations for suitable hair and skin health products. The app also features consultations with hair specialists and informative articles on hair and hair health to enhance the user experience and promote effective hair care practices.</p> <br/>
+        <p>The groundbreaking features of HairCare provide comprehensive and reliable solutions for various hair health issues. By identifying problems, recommending suitable products, and offering educational resources, HairCare is revolutionizing hair care practices for its users. Moreover, the app\'s partnerships with reputable brands in the hair care industry further solidify its credibility as a trustworthy platform for effective and high-quality hair care products.</p> <br/>
+        <p>More than just an app, HairCare serves as a companion in the journey toward healthier and more beautiful hair. By integrating technology, knowledge, and superior products, HairCare effectively bridges the gap between understanding the importance of hair health and implementing appropriate care. Therefore, HairCare plays a vital role in enhancing users\' quality of life and self-confidence through targeted and effective hair care.</p>
+    ]]></string>
+    <string name="title_carousel">Genjala Kerusakan Rambut</string>
+    <string name="consult_with_experts">Consult with Experts:</string>
+    <string name="desc_consult">If something doesn’t feel right, don’t hesitate to visit a doctor or hair care specialist.</string>
+    <string name="healthy_hair">Healthy Hair</string>
+
 </resources>

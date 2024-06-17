@@ -34,15 +34,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupObserve() {
         viewModel.loginResult.observe(this) { result ->
-            result.onSuccess { response ->
-                MaterialAlertDialogBuilder(this@LoginActivity)
-                    .setTitle(resources.getString(R.string.title_dialog))
-                    .setMessage(R.string.supporting_text_dialog)
-                    .setPositiveButton(resources.getString(R.string.accept_dialog)) { dialog, which ->
-                        navigateToMainActivity()
-                    }
-                    .show()
-
+            result.onSuccess {
+                navigateToMainActivity()
             }.onFailure { exception ->
                 showSnackbar(exception.message ?: "Unknown error")
             }
@@ -55,17 +48,14 @@ class LoginActivity : AppCompatActivity() {
                 dismissLoadingDialog()
             }
         }
-
-        viewModel.snackbarText.observe(this) { event ->
-            event.getContentIfNotHandled()?.let { message ->
-                showSnackbar(message)
-            }
-        }
     }
 
     private fun setupView() {
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         supportActionBar?.hide()
+        val costumEditTextPassword = binding.edLoginPassword
+        val costumEditTextLayoutPassword = binding.passwordEditTextLayout
+        costumEditTextPassword.setTextInputLayout(costumEditTextLayoutPassword)
     }
 
     private fun navigateToMainActivity() {
@@ -91,6 +81,7 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.edLoginEmail.text.toString()
             val password = binding.edLoginPassword.text.toString()
             viewModel.login(email, password)
+
         }
     }
 

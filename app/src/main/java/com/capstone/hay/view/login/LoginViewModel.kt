@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.capstone.hay.data.model.UserModel
 import com.capstone.hay.data.repository.AuthRepository
 import com.capstone.hay.data.response.LoginResponse
-import com.capstone.hay.utils.Event
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val authRepository: AuthRepository) : ViewModel() {
@@ -18,9 +17,6 @@ class LoginViewModel(private val authRepository: AuthRepository) : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    private val _snackbarText = MutableLiveData<Event<String>>()
-    val snackbarText: LiveData<Event<String>> = _snackbarText
-
     fun login(email: String, password: String) {
         viewModelScope.launch {
             _isLoading.value = true
@@ -30,6 +26,8 @@ class LoginViewModel(private val authRepository: AuthRepository) : ViewModel() {
                 try {
                     saveSession(
                         UserModel(
+                            response.token,
+                            response.userId,
                             response.userData.email,
                             response.userData.name,
                             response.userData.phone,

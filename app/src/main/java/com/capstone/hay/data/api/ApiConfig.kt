@@ -21,7 +21,7 @@ object ApiConfig {
 
     fun getApiService(): ApiService {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://hay-github-actions-ubmy5cro7q-et.a.run.app/")
+            .baseUrl("https://cloud-run-github-actions-ubmy5cro7q-et.a.run.app/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

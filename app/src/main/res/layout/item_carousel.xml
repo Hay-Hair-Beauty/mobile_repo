@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/first_carousel_bg"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/imgObject"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/first_carousel_object"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="800dp"
+            android:background="@drawable/gradient_carousel" />
+
+        <TextView
+            android:id="@+id/titleCarousel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:text="@string/title_carousel"
+            android:textSize="24sp"
+            android:textColor="@color/soft_gray"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginStart="24sp"
+            android:layout_marginEnd="24sp"
+            android:layout_marginBottom="24dp"/>
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:src="@drawable/hay_icon"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="24dp"
+            android:layout_gravity="end"/>
+    </FrameLayout>

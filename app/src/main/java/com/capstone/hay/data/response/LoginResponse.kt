@@ -10,23 +10,24 @@ data class LoginResponse(
 	@field:SerializedName("message")
 	val message: String? = null,
 
+	@field:SerializedName("userId")
+	val userId: String,
+
+	@field:SerializedName("token")
+	val token: String,
+
 	@field:SerializedName("error")
-	val error: String? = null
+	val error: String? = null,
 )
 
-data class CreatedAt(
-
-	@field:SerializedName("_nanoseconds")
-	val nanoseconds: Int? = null,
-
-	@field:SerializedName("_seconds")
-	val seconds: Int? = null
-)
 
 data class UserData(
 
 	@field:SerializedName("createdAt")
 	val createdAt: CreatedAt,
+
+	@field:SerializedName("role")
+	val role: String,
 
 	@field:SerializedName("phone")
 	val phone: String,

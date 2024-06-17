@@ -13,9 +13,27 @@
 
     <fragment
         android:id="@+id/navigation_news"
+        android:name="com.capstone.hay.view.news.NewsFragment"
+        android:label="@string/home_menu"
+        tools:layout="@layout/fragment_news">
+        <action
+            android:id="@+id/action_newsFragment_to_detailNewsFragment"
+            app:destination="@id/navigation_detail_news">
+            <argument
+                android:name="newsId"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_detail_news"
         android:name="com.capstone.hay.view.news.DetailNewsFragment"
-        android:label="@string/news_menu"
-        tools:layout="@layout/fragment_news" />
+        android:label="Detail News"
+        tools:layout="@layout/fragment_detail_news">
+        <argument
+            android:name="newsId"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_scan"
@@ -31,8 +49,20 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.capstone.hay.view.news.DetailNewsFragment"
+        android:name="com.capstone.hay.view.profile.ProfileFragment"
         android:label="@string/profile_menu"
-        tools:layout="@layout/fragment_detail_news" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profilFragment_to_aboutUsFragment"
+            app:destination="@id/navigation_about_us"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_about_us"
+        android:name="com.capstone.hay.view.profile.AboutUsFragment"
+        android:label="@string/profile_menu"
+        tools:layout="@layout/fragment_about_us">
+    </fragment>
+
 
 </navigation>
