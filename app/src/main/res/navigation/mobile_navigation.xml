@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.capstone.hay.view.home.HomeFragment"
+        android:label="@string/home_menu"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_consultation"
+            app:destination="@id/navigation_consultation"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@animator/nav_default_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_news"
+        android:name="com.capstone.hay.view.news.NewsFragment"
+        android:label="@string/home_menu"
+        tools:layout="@layout/fragment_news">
+        <action
+            android:id="@+id/action_newsFragment_to_detailNewsFragment"
+            app:destination="@id/navigation_detail_news"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim">
+            <argument
+                android:name="newsId"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_detail_news"
+        android:name="com.capstone.hay.view.news.DetailNewsFragment"
+        android:label="Detail News"
+        tools:layout="@layout/fragment_detail_news">
+        <argument
+            android:name="newsId"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_scan"
+        android:name="com.capstone.hay.view.scan.ScanFragment"
+        android:label="@string/scan_menu"
+        tools:layout="@layout/fragment_scan" >
+        <action
+            android:id="@+id/action_scanFragment_to_ScanImageFragment"
+            app:destination="@id/navigation_scan_image"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_scan_image"
+        android:name="com.capstone.hay.view.scan.ScanImageFragment"
+        android:label="@string/scan_image_menu"
+        tools:layout="@layout/fragment_scan_image">
+        <action
+            android:id="@+id/action_scanImageFragment_to_resultScanFragment"
+            app:destination="@id/navigation_result_scan">
+            <argument
+                android:name="labelHairIssue"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_result_scan"
+        android:name="com.capstone.hay.view.scan.ResultScanFragment"
+        android:label="@string/result_scan_menu"
+        tools:layout="@layout/fragment_result_scan">
+        <argument
+            android:name="labelHairIssue"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_resultScanFragment_to_consultationFragment"
+            app:destination="@id/navigation_consultation"/>
+        <argument
+            android:name="image"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_consultation"
+        android:name="com.capstone.hay.view.scan.ConsultationFragment"
+        android:label="@string/consultation_menu"
+        tools:layout="@layout/fragment_consultation">
+        <action
+            android:id="@+id/action_consultationFragment_to_detailConsultationFragment"
+            app:destination="@id/navigation_detail_consultation">
+            <argument
+                android:name="consult"
+                app:argType="com.capstone.hay.data.model.ConsultModel" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_detail_consultation"
+        android:name="com.capstone.hay.view.scan.DetailConsultationFragment"
+        android:label="@string/detail_consultation_menu"
+        tools:layout="@layout/fragment_detail_consultation">
+        <argument
+            android:name="consult"
+            app:argType="com.capstone.hay.data.model.ConsultModel" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.capstone.hay.view.history.HistoryFragment"
+        android:label="@string/history_menu"
+        tools:layout="@layout/fragment_history" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.capstone.hay.view.profile.ProfileFragment"
+        android:label="@string/profile_menu"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_infoProfileFragment"
+            app:destination="@id/navigation_info_profile"/>
+        <action
+            android:id="@+id/action_profileFragment_to_aboutUsFragment"
+            app:destination="@id/navigation_about_us"/>
+        <action
+            android:id="@+id/action_navigation_profile_to_navigation_password_security"
+            app:destination="@id/navigation_password_security"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@animator/nav_default_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_about_us"
+        android:name="com.capstone.hay.view.profile.AboutUsFragment"
+        android:label="@string/profile_menu"
+        tools:layout="@layout/fragment_about_us">
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_info_profile"
+        android:name="com.capstone.hay.view.profile.InfoProfileFragment"
+        android:label="@string/info_profile"
+        tools:layout="@layout/fragment_info_profile">
+        <action
+            android:id="@+id/action_navigation_info_profile_to_navigation_edit_profile"
+            app:destination="@id/navigation_edit_profile"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@animator/nav_default_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_password_security"
+        android:name="com.capstone.hay.view.profile.PasswordSecurityFragment"
+        android:label="@string/password_and_security_menu"
+        tools:layout="@layout/fragment_password_security">
+        <action
+            android:id="@+id/action_navigation_password_security_to_navigation_change_password"
+            app:destination="@id/navigation_change_password"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_edit_profile"
+        android:name="com.capstone.hay.view.profile.EditProfileFragment"
+        android:label="@string/edit_profile_menu"
+        tools:layout="@layout/fragment_edit_profile"/>
+
+    <fragment
+        android:id="@+id/navigation_change_password"
+        android:name="com.capstone.hay.view.profile.ChangePasswordFragment"
+        android:label="@string/change_password_menu"
+        tools:layout="@layout/fragment_change_password"/>
+
+</navigation>

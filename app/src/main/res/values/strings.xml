@@ -1,4 +1,189 @@
 <resources>
     <string name="app_name">Hay</string>
     <string name="description_icon">Logo Aplikasi Hay</string>
+    <string name="img_login">gambar pada login activity</string>
+    <string name="title_login_activity">Login Page</string>
+    <string name="title_register_activity">Register Page</string>
+    <string name="emailHint">Email</string>
+    <string name="passwordHint">Password</string>
+    <string name="btn_login">Login</string>
+    <string name="or">or</string>
+    <string name="info_register_account">Dont\'t have any account?</string>
+    <string name="register">Register</string>
+    <string name="btn_login_google">Continue with Google</string>
+    <string name="desc_login_google">Login menggunakan akun google</string>
+    <string name="nameHint">Name</string>
+    <string name="phoneNumberHint">Phone Number</string>
+    <string name="confirmPasswordHint">Confirm Password</string>
+    <string name="btn_register">Register</string>
+    <string name="info_login_account">Have an account?</string>
+    <string name="login">Login</string>
+    <string name="title_verification_activity">Verification</string>
+    <string name="desc_verification_activity">We’ll send you a code to your email:</string>
+    <string name="desc_forgot_password_activity">We’ll send you a password to your email:</string>
+    <string name="info_count_timer">Resend code in %1$d:%2$02d s, </string>
+    <string name="resend_now">Resend now!</string>
+    <string name="btn_confirm">Confirm</string>
+    <string name="your_web_client_id">126780028253-tall5hab9d1mv1s5lfg1atp1ccd2d24d.apps.googleusercontent.com</string>
+    <string name="home_menu">Home</string>
+    <string name="news_menu">News</string>
+    <string name="scan_menu">Scan</string>
+    <string name="history_menu">History</string>
+    <string name="profile_menu">Profile</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_news">Penggunaan Produk shampo yang menggunakan bahan dasar kimia</string>
+    <string name="default_author">Hay Official</string>
+    <string name="barier_or_news">,</string>
+    <string name="default_published">02 Januari 2024</string>
+    <string name="default_description">Lorem ipsum dolor sit amet consectetur. Amet ac adipiscing donec ante. dolor sit amet consectetur. Amet ac adipiscing donec ante. Lorem ipsum dolor sit amet consectetur. Amet ac adipiscing donec ante. dolor sit amet consectetur. Amet ac adipiscing donec ante. Lorem ipsum dolor sit amet consectetur. Amet ac adipiscing donec ante. dolor sit amet consectetur. Amet ac adipiscing donec ante. Lorem ipsum dolor sit amet consectetur. Amet ac adipiscing donec ante. dolor sit amet consectetur. Amet ac adipiscing donec ante. Lorem ipsum dolor sit amet consectetur. Amet ac adipiscing donec ante. dolor sit amet consectetur. Amet ac adipiscing donec ante.</string>
+    <string name="search_news">Search news...</string>
+    <string name="title_scan_image">Kepala bagian atas</string>
+    <string name="desc_scan_image">Please select the photo you want to scan to find out the current condition of your hair.</string>
+    <string name="example">Example</string>
+    <string name="from_gallery">From Gallery</string>
+    <string name="camera">Camera</string>
+    <string name="title_upload_file">Upload File</string>
+    <string name="scan">Scan</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="title_dialog">Success</string>
+    <string name="supporting_text_dialog">Login berhasil dilakukan</string>
+    <string name="accept_dialog">Ok</string>
+    <string name="progress">Silahkan Tunggu</string>
+    <string name="list_title_history">All</string>
+    <string name="error_message_password">Password must be at least 8 characters</string>
+    <string name="error_message_email_input">Your email format is incorrect</string>
+    <string name="img_scan">Gambar scan</string>
+    <string name="no_media_selected">No media selected</string>
+    <string name="ok_result">Ok</string>
+    <string name="result">Result</string>
+    <string name="desc_image_news">Ini gambar content artikel</string>
+    <string name="language_menu">Language</string>
+    <string name="menu_app_media">App And Media</string>
+    <string name="redirect_to_language_menu">Pergi ke menu Bahasa</string>
+    <string name="present_user">Good Morning, %s</string>
+    <string name="desc_user">Let Hay Make Your Hair Sway!</string>
+    <string name="theme_menu">Theme</string>
+    <string name="menu_info_support">Info And Support</string>
+    <string name="about_us_menu">About Us</string>
+    <string name="menu_account_Settings">Account Settings</string>
+    <string name="password_and_security_menu">Password And Security</string>
+    <string name="menu_login">Login</string>
+    <string name="another_account_btn">Another Account</string>
+    <string name="logout_btn">Log Out</string>
+    <string name="about_us_text"><![CDATA[
+        <p>Introducing HairCare, an innovative app dedicated to addressing common hair issues such as hair loss, dandruff, scalp problems, and slow hair growth. The primary objective of HairCare is to raise awareness about hair health and offer tailored solutions for users\' specific concerns. Using advanced image classification technology, HairCare can detect signs of hair diseases and scalp issues, enabling personalized recommendations for suitable hair and skin health products. The app also features consultations with hair specialists and informative articles on hair and hair health to enhance the user experience and promote effective hair care practices.</p> <br/>
+        <p>The groundbreaking features of HairCare provide comprehensive and reliable solutions for various hair health issues. By identifying problems, recommending suitable products, and offering educational resources, HairCare is revolutionizing hair care practices for its users. Moreover, the app\'s partnerships with reputable brands in the hair care industry further solidify its credibility as a trustworthy platform for effective and high-quality hair care products.</p> <br/>
+        <p>More than just an app, HairCare serves as a companion in the journey toward healthier and more beautiful hair. By integrating technology, knowledge, and superior products, HairCare effectively bridges the gap between understanding the importance of hair health and implementing appropriate care. Therefore, HairCare plays a vital role in enhancing users\' quality of life and self-confidence through targeted and effective hair care.</p>
+    ]]></string>
+    <string name="title_carousel">Genjala Kerusakan Rambut</string>
+    <string name="consult_with_experts">Consult with Experts:</string>
+    <string name="desc_consult">If something doesn’t feel right, don’t hesitate to visit a doctor or hair care specialist.</string>
+    <string name="healthy_hair">Healthy Hair</string>
+    <string name="result_menu">Result\n</string>
+    <string name="example_hair_issue">Hair Loss And Dandruff</string>
+    <string name="example_description">Here are product recommendations for products to support your hair health:</string>
+    <string name="example_caused_by">Caused by</string>
+    <string name="example_how_to_fix_it">How to fix it</string>
+    <string name="example_recomendation">Recommendation</string>
+    <string name="consultation_btn">Consultation</string>
+    <string name="check_your_hair_condition_title">Check your Hair Condition</string>
+    <string name="with_advanced_technology_we_analyze_the_condition_of_your_hair_and_scalp_thoroughly_from_root_to_tip_we_ll_give_you_in_depth_insight_into_the_health_of_your_hair_desc">With advanced technology, we analyze the condition of your hair and scalp thoroughly. From root to tip, we\'ll give you in-depth insight into the health of your hair.</string>
+    <string name="title_check_your_shampoo">Check your Shampoo</string>
+    <string name="desc_check_your_shampoo">Do you really know what\'s in your shampoo? Now, with the Scan Ingredients feature, you can easily understand every ingredient contained in your hair care products.</string>
+    <string name="title_check_your_hair_style">Check your Hair Style</string>
+    <string name="desc_check_your_hair_style">Want to look different every day with a charming hairstyle? Now, with the Hair Styling feature, you can find and try various new hairstyles in just a few easy steps!</string>
+    <string name="title_check_your_hair_condition">Check your Hair Condition</string>
+    <string name="desc_check_your_hair_condition">With advanced technology, we analyze the condition of your hair and scalp thoroughly. From root to tip, we\'ll give you in-depth insight into the health of your hair.</string>
+    <string name="scan_image_menu">Scan Image</string>
+    <string name="result_scan_menu">Result Scan</string>
+    <string name="example_user">Hanny</string>
+    <string name="email_example">hannynakawaza@gmail.com</string>
+    <string name="my_account_sub_menu">My Account</string>
+    <string name="icon_information_personal_desc">Icon Information personal</string>
+    <string name="information_personal_menu">Information Personal</string>
+    <string name="info_profile">Info Profile\n</string>
+    <string name="consultation_menu">Consultation</string>
+    <string name="detail_consultation_menu">Detail Consultation</string>
+    <string name="product_recomendation">Ini produk rekomendasi</string>
+    <string name="info_consult">%1$s, %2$s, sejak tahun %3$s</string>
+    <string name="calender_menu">Calender</string>
+    <string name="change_password_menu">Change Password</string>
+    <string name="desc_change_password">Use at least 12 characters, combining uppercase and lowercase letters, numbers, and symbols. Avoid personal information like names or birthdates. Don’t reuse passwords across different accounts and update them regularly. Safeguard your digital security with a strong and unique password!</string>
+    <string name="current_password_hint">Current Password</string>
+    <string name="new_password_hint">New Password</string>
+    <string name="save_btn">Save</string>
+    <string name="forgot_password_menu">Forgot Password</string>
+    <string name="edit_profile_menu">Edit Profile</string>
+    <string name="desc_edit_profile">Please fill out the form below if you want to change the content of your profile.</string>
+
+    <string name="validation_empty_confirm_password">Confirm password cannot be empty</string>
+    <string name="validation_must_have_least_confirm_password">Confirm password must be at least 8 characters</string>
+    <string name="validation_contain_uppercase_confirm_password">Confirm password must use at least one uppercase letter</string>
+    <string name="validation_match_confirm_password">Confirm password do not match</string>
+
+    <string name="validation_empty_phone_number">Phone number cannot be empty</string>
+    <string name="validation_valid_phone_number">Invalid phone number</string>
+
+    <string name="validation_empty_name">Name cannot be empty</string>
+    <string name="validation_no_more_length_name">Name can be no more than 20 characters</string>
+
+    <string name="validation_empty_password">Password cannot be empty</string>
+    <string name="validation_contain_uppercase_password">Passwords must use at least one uppercase letter</string>
+    <string name="example_product_recomendation">Redken All Soft Shampoo</string>
+    <string name="example_desc_product_recomendation">Shampoo Redken Treatment for dry hair.</string>
+    <string name="example_name_consult">Septiana Shidqiyyah</string>
+    <string name="example_place_worker">Tempat Kerja</string>
+    <string name="year_consult">2020</string>
+    <string name="specialist_consult">Dermatolog</string>
+    <string name="about_consult">About</string>
+    <string name="example_about">Lorem ipsum dolor sit amet consectetur. Amet ac adipiscing donec ante. dolor sit amet consectetur. Amet ac adipiscing donec ante.</string>
+    <string name="consultation_schedule">Consultation Schedule</string>
+    <string name="example_schedule">Sunday - 13:00 pm - 15:00 pm</string>
+    <string name="news_not_found">News not found.</string>
+
+    <string-array name="name_consult">
+        <item>Katakatsu Irfan</item>
+        <item>Haris Kawasaki</item>
+    </string-array>
+
+    <string-array name="place_consult">
+        <item>Klinik</item>
+        <item>Barbershop</item>
+    </string-array>
+
+    <integer-array name="year_consult">
+        <item>2020</item>
+        <item>2019</item>
+    </integer-array>
+
+    <string-array name="specialist_consult">
+        <item>Dermatolog</item>
+        <item>Styling</item>
+    </string-array>
+
+    <string-array name="about_consult">
+        <item>A dermatologist, since 2020, has played a vital role in the field of skin, hair and nail health. As a trained specialist, the dermatologist is responsible for diagnosing and treating various skin diseases as well as providing innovative and effective treatment solutions. </item>
+        <item>A hair styling specialist with experience since 2020. Expert in various cutting, coloring, and hair care techniques, and adept at creating styles that suit the latest trends and individual needs. Experienced in serving clients from various backgrounds with unique desires. Known for artistic ability and personalized approach in delivering satisfactory results and enhancing clients\' confidence. </item>
+    </string-array>
+
+    <string-array name="schedule_consult">
+        <item>Sunday - 13:00 pm - 15:00 pm</item>
+        <item>Tuesday - 13:00 pm - 15:00 pm</item>
+    </string-array>
+
+    <string-array name="contact_consult">
+        <item>+6287798549081</item>
+        <item>+6283161228858</item>
+    </string-array>
+
+    <integer-array name="photo_consult">
+        <item>@drawable/consult_2</item>
+        <item>@drawable/consult_3</item>
+    </integer-array>
+
 </resources>

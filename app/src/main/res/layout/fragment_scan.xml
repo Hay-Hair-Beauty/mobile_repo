@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/spring_wood_color"
+    android:layout_height="match_parent"
+    android:paddingTop="36dp">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/spring_wood_color"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:background="@color/spring_wood_color"
+            app:expandedTitleMarginStart="48dp"
+            app:expandedTitleMarginEnd="64dp">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:paddingStart="5dp"
+                android:background="@color/spring_wood_color"
+                app:navigationIcon="@drawable/ic_arrow_back"
+                app:navigationIconTint="@color/soft_gray"
+                app:layout_collapseMode="pin"
+                tools:ignore="RtlSymmetry">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/toolbarTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/scan_menu"
+                        android:textColor="@color/soft_gray"
+                        android:textSize="24sp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/poppins_semibold"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardCheckYourHairCondition"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="8dp"
+                style="?attr/materialCardViewFilledStyle"
+                android:backgroundTint="@color/soft_gray"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <FrameLayout
+                    android:id="@+id/imgCheckYourHairCondition"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imgBackgroundCheckYourHairCondition"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/news_menu"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/background_check_your_hair_condition" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/gradient_card_scan" />
+
+                </FrameLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="24dp">
+
+                    <LinearLayout
+                        android:layout_width="230dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center|start"
+                        app:layout_constraintTop_toBottomOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <TextView
+                            android:id="@+id/titleSubCardCheckYourHairCondition"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_check_your_hair_condition"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textSize="14sp"
+                            android:elevation="20dp" />
+
+                        <TextView
+                            android:id="@+id/subtitleSubCardCheckYourHairCondition"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="10sp"
+                            android:textColor="@color/white"
+                            android:elevation="20dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/desc_check_your_hair_condition" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/iconRedirectToCheckYourHairCondition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/ic_arrow_circle_right"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardCheckYourShampoo"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                app:cardCornerRadius="8dp"
+                style="?attr/materialCardViewFilledStyle"
+                android:backgroundTint="@color/soft_gray"
+                android:layout_marginTop="24dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/cardCheckYourHairCondition"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:visibility="visible">
+
+                <FrameLayout
+                    android:id="@+id/imgCardCheckYourShampoo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imgBackgroundCheckYourShampoo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/news_menu"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/background_check_your_shampoo" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/gradient_card_scan" />
+
+                </FrameLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="24dp">
+
+                    <LinearLayout
+                        android:layout_width="230dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center|start"
+                        app:layout_constraintTop_toBottomOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <TextView
+                            android:id="@+id/titleSubCardCheckYourShampoo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_check_your_shampoo"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textSize="14sp"
+                            android:elevation="20dp" />
+
+                        <TextView
+                            android:id="@+id/subtitleSubCardCheckYourShampoo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="10sp"
+                            android:textColor="@color/white"
+                            android:elevation="20dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/desc_check_your_shampoo" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/iconRedirectToCheckYourShampoo"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/ic_arrow_circle_right"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardCheckYourHairStyle"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                app:cardCornerRadius="8dp"
+                style="?attr/materialCardViewFilledStyle"
+                android:backgroundTint="@color/soft_gray"
+                android:layout_marginTop="24dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/cardCheckYourShampoo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:visibility="visible">
+
+                <FrameLayout
+                    android:id="@+id/imgCardCheckYourHairStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imgBackgroundCheckYourHairStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/news_menu"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/background_check_your_hair_style" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/gradient_card_scan" />
+
+                </FrameLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="24dp">
+
+                    <LinearLayout
+                        android:layout_width="230dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center|start"
+                        app:layout_constraintTop_toBottomOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <TextView
+                            android:id="@+id/titleSubCardCheckYourHairStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_check_your_hair_style"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textSize="14sp"
+                            android:elevation="20dp" />
+
+                        <TextView
+                            android:id="@+id/subtitleSubCardCheckYourHairStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="10sp"
+                            android:textColor="@color/white"
+                            android:elevation="20dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/desc_check_your_hair_style" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/iconRedirectToCheckYourHairStyle"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/ic_arrow_circle_right"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

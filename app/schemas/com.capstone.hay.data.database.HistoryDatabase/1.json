@@ -1,0 +1,76 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "11f1085ff89d19bec409c6b9de6881b6",
+    "entities": [
+      {
+        "tableName": "History",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `email` TEXT NOT NULL, `hairIssue` TEXT NOT NULL, `descHairIssue` TEXT NOT NULL, `causedBy` TEXT NOT NULL, `treatment` TEXT NOT NULL, `photo` TEXT NOT NULL, `createdBy` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "email",
+            "columnName": "email",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hairIssue",
+            "columnName": "hairIssue",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "descHairIssue",
+            "columnName": "descHairIssue",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "causedBy",
+            "columnName": "causedBy",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "treatment",
+            "columnName": "treatment",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "photo",
+            "columnName": "photo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdBy",
+            "columnName": "createdBy",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '11f1085ff89d19bec409c6b9de6881b6')"
+    ]
+  }
+}

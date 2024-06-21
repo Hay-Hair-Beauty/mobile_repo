@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardProfileConsult"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:backgroundTint="@color/soft_gray"
+    style="?attr/materialCardViewFilledStyle"
+    android:orientation="vertical"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:id="@+id/infoProfileConsult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="@drawable/button_shape"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/imgProfile"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="18dp"
+                android:src="@drawable/img_profile"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/nameProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/example_name_consult" />
+
+                <TextView
+                    android:id="@+id/placeProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="11sp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/light_gray"
+                    android:text="@string/example_place_worker" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/infoProfileConsult">
+
+            <TextView
+                android:id="@+id/infoYearConsult"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingBottom="8dp"
+                android:layout_gravity="center"
+                android:background="@drawable/button_shape"
+                android:textSize="11sp"
+                android:textColor="@color/soft_gray"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/year_consult"/>
+
+            <TextView
+                android:id="@+id/statusConsult"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="11sp"
+                android:textColor="@color/soft_gray"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/specialist_consult"
+                android:background="@drawable/button_shape"/>
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
