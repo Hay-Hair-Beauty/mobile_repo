@@ -10,6 +10,6 @@ A Mobile App repository of Hay Hair Healthy. Build with Kotlin and use xml versi
 
 - Clone repository to your local environment using git.
 ```
-git clone https://github.com/Hay-Hair-Healthy/mobile_repo
+git clone https://github.com/Hay-Hair-Healthy/mobile_repo.git
 ```
 - Run App.
