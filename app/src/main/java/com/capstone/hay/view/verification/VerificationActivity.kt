@@ -3,6 +3,7 @@ package com.capstone.hay.view.verification
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -13,6 +14,7 @@ import com.capstone.hay.view.login.LoginActivity
 import com.capstone.hay.view.register.RegisterActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import java.util.concurrent.TimeUnit
 
 class VerificationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityVerificationBinding
@@ -20,23 +22,61 @@ class VerificationActivity : AppCompatActivity() {
         ViewModelFactory.getInstance(this)
     }
     private var loadingDialog: AlertDialog? = null
+    private lateinit var countDownTimer: CountDownTimer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVerificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val email = intent.getStringExtra(EXTRA_EMAIL)
-        if (email !== null) {
+        if (email != null) {
             setupVerification(email)
         } else {
             redirectToRegister()
         }
 
+        binding.resendNowCodeVerification.setOnClickListener {
+            if (email != null) {
+                viewModel.resendVerificationCode(email)
+            }
+        }
+
+        binding.codeVerification1.requestFocus()
         setupObserve()
         setupView()
+        setupTime()
     }
 
-    private fun setupVerification(email : String) {
+    private fun setupTime() {
+        val totalTimeInMillis: Long = 5 * 60 * 1000
+        startTimer(totalTimeInMillis)
+    }
+
+    private fun startTimer(totalTimeInMillis: Long) {
+        countDownTimer = object : CountDownTimer(totalTimeInMillis, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val minutes = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)
+                val seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
+                        TimeUnit.MINUTES.toSeconds(minutes)
+
+                binding.infoCountTimerExpiredCode.text = getString(R.string.info_count_timer, minutes, seconds)
+            }
+
+            override fun onFinish() {
+                binding.infoCountTimerExpiredCode.text = getString(R.string.info_count_timer, 0, 0)
+            }
+        }
+
+        countDownTimer.start()
+    }
+
+    private fun resetTimer() {
+        countDownTimer.cancel()
+        startTimer(5 * 60 * 1000)
+    }
+
+    private fun setupVerification(email: String) {
         binding.btnConfirm.setOnClickListener {
             val code = binding.codeVerification1.text.toString().trim() +
                     binding.codeVerification2.text.toString().trim() +
@@ -67,6 +107,12 @@ class VerificationActivity : AppCompatActivity() {
         viewModel.verifyResult.observe(this) { result ->
             result.onSuccess {
                 navigateToLogin()
+            }
+        }
+
+        viewModel.resendVerifyResult.observe(this) { result ->
+            result.onSuccess {
+                resetTimer()
             }
         }
     }

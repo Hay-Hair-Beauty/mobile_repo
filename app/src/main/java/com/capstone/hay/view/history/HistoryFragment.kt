@@ -1,60 +1,97 @@
 package com.capstone.hay.view.history
 
 import android.os.Bundle
+import android.view.*
+import androidx.core.util.Pair
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone.hay.R
+import com.capstone.hay.adapter.HistoryAdapter
+import com.capstone.hay.databinding.FragmentHistoryBinding
+import com.capstone.hay.utils.formatDate
+import com.capstone.hay.view.ViewModelFactory
+import com.capstone.hay.view.home.HomeViewModel
+import com.capstone.hay.view.news.NewsViewModel
+import com.google.android.material.datepicker.MaterialDatePicker
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HistoryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HistoryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private var _binding: FragmentHistoryBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel by viewModels<HistoryViewModel>{
+        ViewModelFactory.getInstance(requireContext())
     }
+    private val viewModelAuth by viewModels<HomeViewModel> {
+        ViewModelFactory.getInstance(requireContext())
+    }
+
+    private var email: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history, container, false)
+    ): View {
+        _binding = FragmentHistoryBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HistoryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HistoryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.topAppBar.inflateMenu(R.menu.top_app_bar_history)
+        binding.rvHistory.layoutManager = LinearLayoutManager(requireContext())
+        binding.topAppBar.setOnMenuItemClickListener  {
+            when (it.itemId) {
+                R.id.calender_menu -> {
+                    showCalender()
+                    true
+                }
+                else -> false
+            }
+        }
+
+        viewModelAuth.getSession().observe(requireActivity(), {
+            getAllHistory(it.email)
+            email = it.email
+        })
+
+    }
+
+    private fun getAllHistory(email : String) {
+        val adapter = HistoryAdapter()
+        binding.rvHistory.adapter = adapter
+        viewModel.getAllHistory(null, null, email).observe(requireActivity(), {
+            adapter.submitList(it)
+        })
+    }
+
+    private fun showCalender() {
+        val datePicker = MaterialDatePicker.Builder.dateRangePicker()
+            .setTitleText("Select date range")
+            .setTheme(R.style.ThemeCalender)
+            .setSelection(Pair(null, null))
+            .build()
+
+        datePicker.addOnPositiveButtonClickListener { selection ->
+            val startDate = selection.first
+            val endDate = selection.second
+            if (startDate != null && endDate != null) {
+                email?.let {
+                    viewModel.getAllHistory(startDate, endDate, it).observe(requireActivity(), {
+                        val adapter = HistoryAdapter()
+                        binding.rvHistory.adapter = adapter
+                        adapter.submitList(it)
+                        binding.listTitleHistory.text = formatDate(startDate) + " - " + formatDate(endDate)
+
+                    })
                 }
             }
+        }
+
+        datePicker.show(parentFragmentManager, datePicker.toString())
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

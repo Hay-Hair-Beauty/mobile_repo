@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import com.capstone.hay.R
 import com.capstone.hay.databinding.ActivityLoginBinding
 import com.capstone.hay.view.ViewModelFactory
+import com.capstone.hay.view.forgot.ForgotPasswordActivity
 import com.capstone.hay.view.main.MainActivity
 import com.capstone.hay.view.register.RegisterActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -28,8 +29,16 @@ class LoginActivity : AppCompatActivity() {
 
         setupView()
         setupObserve()
-        redirectToLogin()
+        redirectToRegister()
+        redirectToForgotPassword()
         setupLogin()
+    }
+
+    private fun redirectToForgotPassword() {
+        binding.forgetPassword.setOnClickListener {
+            val intent = Intent(this, ForgotPasswordActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setupObserve() {
@@ -53,9 +62,8 @@ class LoginActivity : AppCompatActivity() {
     private fun setupView() {
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         supportActionBar?.hide()
-        val costumEditTextPassword = binding.edLoginPassword
-        val costumEditTextLayoutPassword = binding.passwordEditTextLayout
-        costumEditTextPassword.setTextInputLayout(costumEditTextLayoutPassword)
+        binding.edLoginEmail.setTextInputLayout(binding.emailEditTextLayout)
+        binding.edLoginPassword.setTextInputLayout(binding.passwordEditTextLayout)
     }
 
     private fun navigateToMainActivity() {
@@ -69,7 +77,7 @@ class LoginActivity : AppCompatActivity() {
         Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
 
-    private fun redirectToLogin() {
+    private fun redirectToRegister() {
         binding.tvRedirectToRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)

@@ -23,11 +23,15 @@ class NewsViewModel(private val articleRepository: ArticleRepository) : ViewMode
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
+    private val _isShowTextNotFound = MutableLiveData<Boolean>()
+    val isShowTextNotFound: LiveData<Boolean> = _isShowTextNotFound
+
     private val _snackbarText = MutableLiveData<Event<String>>()
     val snackbarText: LiveData<Event<String>> = _snackbarText
 
     fun getAllArticle() {
             viewModelScope.launch {
+                _isShowTextNotFound.value = false
                 _isLoading.value = true
                 val result = articleRepository.getAllArticle()
                 if (result.isSuccess) {
@@ -36,8 +40,26 @@ class NewsViewModel(private val articleRepository: ArticleRepository) : ViewMode
                 } else {
                     _snackbarText.value = Event(result.exceptionOrNull()?.message ?: "Internal server error")
                     _isLoading.value = false
+                    _isShowTextNotFound.value = true
                 }
             }
+
+    }
+
+    fun getAllArticleByTitle(title: String) {
+        viewModelScope.launch {
+            _isLoading.value = true
+            _isShowTextNotFound.value = false
+            val result = articleRepository.getSearchArticle(title)
+            if (result.isSuccess) {
+                _articleResult.value = result
+                _isLoading.value = false
+            } else {
+                _snackbarText.value = Event(result.exceptionOrNull()?.message ?: "Internal server error")
+                _isLoading.value = false
+                _isShowTextNotFound.value = true
+            }
+        }
 
     }
 

@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,18 +14,19 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
+import androidx.navigation.fragment.findNavController
 import com.capstone.hay.R
 import com.capstone.hay.databinding.FragmentScanImageBinding
 import com.capstone.hay.utils.ImageClassifierHelper
 import com.capstone.hay.view.camera.CameraActivity
 import com.capstone.hay.view.camera.CameraActivity.Companion.CAMERAX_RESULT
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.appbar.MaterialToolbar
 import com.yalantis.ucrop.UCrop
 import org.tensorflow.lite.task.vision.classifier.Classifications
 import java.io.File
-import java.text.NumberFormat
 
 class ScanImageFragment : Fragment() {
     private lateinit var imageClassifierHelper: ImageClassifierHelper
@@ -69,8 +69,8 @@ class ScanImageFragment : Fragment() {
     ) {
         if (it.resultCode == CAMERAX_RESULT) {
             currentImageUri = it.data?.getStringExtra(CameraActivity.EXTRA_CAMERAX_IMAGE)?.toUri()
-            currentImageUri?.let {
-                startUCrop(it)
+            currentImageUri?.let { uri ->
+                startUCrop(uri)
             }
         }
     }
@@ -93,6 +93,17 @@ class ScanImageFragment : Fragment() {
         binding.btnFromGallery.setOnClickListener { startGallery() }
         binding.btnCamera.setOnClickListener { startCamera() }
         binding.scanButton.setOnClickListener { startScan() }
+        setupActionBack()
+    }
+
+    private fun setupActionBack() {
+        val topAppBar: MaterialToolbar = binding.topAppBar
+        (requireActivity() as AppCompatActivity).setSupportActionBar(topAppBar)
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        topAppBar.setNavigationOnClickListener {
+            @Suppress("DEPRECATION")
+            requireActivity().onBackPressed()
+        }
     }
 
     private fun startScan() {
@@ -105,25 +116,17 @@ class ScanImageFragment : Fragment() {
                     }
                 }
 
-                override fun onResults(result: List<Classifications>?) {
+                override fun onResults(results: List<Classifications>?) {
                     requireActivity().runOnUiThread {
-                        result?.let {it ->
-                            Log.d("SCAN DETECT", it[0].categories[0].label.toString())
+                        results?.let { it ->
                             if (it.isNotEmpty() && it[0].categories.isNotEmpty()) {
                                 val sortedCategories = it[0].categories.sortedByDescending { it?.score }
                                 val highestPrediction = sortedCategories.firstOrNull()
 
                                 highestPrediction?.let { category ->
-                                    val label = category.label
-                                    val score = category.score
-                                    val displayResult = "$label " + NumberFormat.getPercentInstance().format(score).trim()
+                                    val action = ScanImageFragmentDirections.actionScanImageFragmentToResultScanFragment(category.label, currentImageUri.toString())
+                                    findNavController().navigate(action)
 
-                                    MaterialAlertDialogBuilder(requireContext())
-                                        .setTitle(resources.getString(R.string.result))
-                                        .setMessage(displayResult)
-                                        .setPositiveButton(resources.getString(R.string.ok_result)) { dialog, which ->
-                                        }
-                                        .show()
                                 }
                             }
                         }
@@ -157,7 +160,9 @@ class ScanImageFragment : Fragment() {
         launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        @Suppress("DEPRECATION")
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == UCrop.REQUEST_CROP && resultCode == Activity.RESULT_OK) {
             val resultUri = UCrop.getOutput(data!!)
@@ -181,8 +186,6 @@ class ScanImageFragment : Fragment() {
             binding.iconImage.visibility = View.GONE
         }
     }
-
-
 
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()

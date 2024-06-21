@@ -79,6 +79,11 @@ class RegisterActivity : AppCompatActivity() {
     private fun setupView() {
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         supportActionBar?.hide()
+        binding.edRegisterEmail.setTextInputLayout(binding.emailEditTextLayout)
+        binding.edRegisterName.setTextInputLayout(binding.nameEditTextLayout)
+        binding.edRegisterPhoneNumber.setTextInputLayout(binding.phoneNumberEditTextLayout)
+        binding.edRegisterPassword.setTextInputLayout(binding.passwordEditTextLayout)
+        binding.edRegisterConfirmPassword.setTextInputLayout(binding.confirmPasswordEditTextLayout)
     }
 
     private fun redirectToLogin() {

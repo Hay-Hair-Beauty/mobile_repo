@@ -5,6 +5,8 @@ import com.capstone.hay.data.model.UserModel
 import com.capstone.hay.data.pref.UserPreference
 import com.capstone.hay.data.response.LoginResponse
 import com.capstone.hay.data.response.RegisterResponse
+import com.capstone.hay.data.response.ResendVerificationCodeResponse
+import com.capstone.hay.data.response.ResetPasswordResponse
 import com.capstone.hay.data.response.VerifyResponse
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
@@ -78,6 +80,56 @@ class AuthRepository private constructor(
             if (errorBody != null) {
                 try {
                     val errorResponse = Gson().fromJson(errorBody, RegisterResponse::class.java)
+                    Result.failure(Exception(errorResponse.error))
+                } catch (jsonException: JsonSyntaxException) {
+                    Result.failure(Exception("Unexpected error format: $errorBody"))
+                }
+            } else {
+                Result.failure(Exception("Unknown error"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun resetPassword(email: String): Result<ResetPasswordResponse> {
+        return try {
+            val response = apiService.resetPassword(email)
+            if (response.error === null) {
+                Result.success(response)
+            } else {
+                Result.failure(Exception("Error: ${response.error}"))
+            }
+        } catch (e: HttpException){
+            val errorBody = e.response()?.errorBody()?.string()
+            if (errorBody != null) {
+                try {
+                    val errorResponse = Gson().fromJson(errorBody, ResetPasswordResponse::class.java)
+                    Result.failure(Exception(errorResponse.error))
+                } catch (jsonException: JsonSyntaxException) {
+                    Result.failure(Exception("Unexpected error format: $errorBody"))
+                }
+            } else {
+                Result.failure(Exception("Unknown error"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun resendVerificationCode(email: String): Result<ResendVerificationCodeResponse> {
+        return try {
+            val response = apiService.resendVerification(email)
+            if (response.error === null) {
+                Result.success(response)
+            } else {
+                Result.failure(Exception("Error: ${response.error}"))
+            }
+        } catch (e: HttpException){
+            val errorBody = e.response()?.errorBody()?.string()
+            if (errorBody != null) {
+                try {
+                    val errorResponse = Gson().fromJson(errorBody, ResendVerificationCodeResponse::class.java)
                     Result.failure(Exception(errorResponse.error))
                 } catch (jsonException: JsonSyntaxException) {
                     Result.failure(Exception("Unexpected error format: $errorBody"))

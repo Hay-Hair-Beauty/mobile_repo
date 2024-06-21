@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.capstone.hay.R
@@ -123,6 +124,11 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+
+        binding.cardConsult.setOnClickListener {
+            val action = HomeFragmentDirections.actionNavigationHomeToNavigationConsultation()
+            findNavController().navigate(action)
+        }
     }
 
     private fun startAutoPlay() {

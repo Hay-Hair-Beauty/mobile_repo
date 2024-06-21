@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.capstone.hay.data.repository.AuthRepository
+import com.capstone.hay.data.response.ResendVerificationCodeResponse
 import com.capstone.hay.data.response.VerifyResponse
 import com.capstone.hay.utils.Event
 import kotlinx.coroutines.launch
@@ -13,6 +14,9 @@ class VerificationViewModel(private val authRepository: AuthRepository) : ViewMo
 
     private val _verifyResult  = MutableLiveData<Result<VerifyResponse>>()
     val verifyResult: LiveData<Result<VerifyResponse>> = _verifyResult
+
+    private val _resendVerifyResult  = MutableLiveData<Result<ResendVerificationCodeResponse>>()
+    val resendVerifyResult: LiveData<Result<ResendVerificationCodeResponse>> = _resendVerifyResult
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -27,6 +31,19 @@ class VerificationViewModel(private val authRepository: AuthRepository) : ViewMo
             _isLoading.value = false
             if (result.isSuccess) {
                 _verifyResult.value = result
+            } else {
+                _snackbarText.value = Event(result.exceptionOrNull()?.message ?: "Internal server error")
+            }
+        }
+    }
+
+    fun resendVerificationCode(email: String) {
+        viewModelScope.launch {
+            _isLoading.value = true
+            val result = authRepository.resendVerificationCode(email)
+            _isLoading.value = false
+            if (result.isSuccess) {
+                _resendVerifyResult.value = result
             } else {
                 _snackbarText.value = Event(result.exceptionOrNull()?.message ?: "Internal server error")
             }

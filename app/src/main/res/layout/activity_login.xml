@@ -60,7 +60,7 @@
                     app:boxStrokeColor="@color/light_gray"
                     app:hintTextColor="@color/light_gray">
 
-                        <com.capstone.hay.costum.CostumeEditTextEmail
+                        <com.capstone.hay.costum.CostumeEditText
                             android:id="@+id/ed_login_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -76,6 +76,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:textColorHint="@color/light_gray"
@@ -91,7 +92,7 @@
                     app:boxStrokeColor="@color/light_gray"
                     app:hintTextColor="@color/light_gray">
 
-                        <com.capstone.hay.costum.CostumeEditTextPassword
+                        <com.capstone.hay.costum.CostumeEditText
                             android:id="@+id/edLoginPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -206,6 +207,7 @@
                     android:layout_marginEnd="30dp"
                     android:padding="12dp"
                     android:textSize="14sp"
+                    android:visibility="gone"
                     android:textColor="@color/black"
                     android:contentDescription="@string/desc_login_google"
                     android:text="@string/btn_login_google"

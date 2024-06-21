@@ -34,6 +34,31 @@ class ArticleRepository private constructor(private val apiService: ApiService){
         }
     }
 
+    suspend fun getSearchArticle(title: String): Result<ArticleResponse> {
+        return try {
+            val response = apiService.searchArticle(title)
+            if (response.error === null) {
+                Result.success(response)
+            } else {
+                Result.failure(Exception("Error: ${response.error}"))
+            }
+        } catch (e: HttpException) {
+            val errorBody = e.response()?.errorBody()?.string()
+            if (errorBody != null) {
+                try {
+                    val errorResponse = Gson().fromJson(errorBody, ArticleResponse::class.java)
+                    Result.failure(Exception(errorResponse.error))
+                } catch (jsonException: JsonSyntaxException) {
+                    Result.failure(Exception("Unexpected error format: $errorBody"))
+                }
+            } else {
+                Result.failure(Exception("Unknown error"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
     suspend fun getArticleById(id: String): Result<DataItem> {
         return try {
             val response = apiService.getArticleById(id)

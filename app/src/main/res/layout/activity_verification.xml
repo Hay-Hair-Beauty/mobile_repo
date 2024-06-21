@@ -95,6 +95,8 @@
                 android:fontFamily="@font/poppins_semibold"
                 android:alpha="0.3"
                 android:layout_weight="1"
+                android:cursorVisible="false"
+                android:imeOptions="actionNext"
                 android:background="@drawable/rounded_ed_verification"/>
 
             <EditText
@@ -110,6 +112,8 @@
                 android:gravity="center"
                 android:alpha="0.3"
                 android:layout_weight="1"
+                android:cursorVisible="false"
+                android:imeOptions="actionNext"
                 android:background="@drawable/rounded_ed_verification"/>
 
             <EditText
@@ -125,6 +129,8 @@
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:layout_weight="1"
+                android:cursorVisible="false"
+                android:imeOptions="actionNext"
                 android:background="@drawable/rounded_ed_verification"/>
 
             <EditText
@@ -140,6 +146,8 @@
                 android:fontFamily="@font/poppins_semibold"
                 android:alpha="0.3"
                 android:layout_weight="1"
+                android:cursorVisible="false"
+                android:imeOptions="actionNext"
                 android:background="@drawable/rounded_ed_verification"/>
 
             <EditText
@@ -154,6 +162,8 @@
                 android:fontFamily="@font/poppins_semibold"
                 android:alpha="0.3"
                 android:layout_weight="1"
+                android:cursorVisible="false"
+                android:imeOptions="actionNext"
                 android:background="@drawable/rounded_ed_verification"/>
         </LinearLayout>
 
@@ -177,7 +187,7 @@
                 android:text="@string/info_count_timer"/>
 
             <TextView
-                android:id="@+id/recentNowCodeVerification"
+                android:id="@+id/resendNowCodeVerification"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

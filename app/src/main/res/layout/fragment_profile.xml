@@ -13,17 +13,18 @@
 <com.google.android.material.appbar.AppBarLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="5dp"
     android:background="@color/spring_wood_color"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
     <com.google.android.material.appbar.CollapsingToolbarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="5dp"
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
         android:background="@color/spring_wood_color"
         app:expandedTitleMarginStart="48dp"
-        app:expandedTitleMarginEnd="64dp">
+        app:expandedTitleMarginEnd="64dp"
+        tools:ignore="RtlSymmetry">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
@@ -142,6 +143,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/menu_app_media"
+            android:visibility="gone"
             android:fontFamily="@font/poppins_semibold"
             android:textColor="@color/soft_gray"
             android:layout_marginTop="24dp"
@@ -155,6 +157,7 @@
             android:backgroundTint="@color/soft_gray"
             style="?attr/materialCardViewFilledStyle"
             android:orientation="horizontal"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@+id/appMediaMenu"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -214,6 +217,7 @@
             android:backgroundTint="@color/soft_gray"
             style="?attr/materialCardViewFilledStyle"
             android:orientation="horizontal"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@+id/cardLanguage"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -348,6 +352,7 @@
             android:fontFamily="@font/poppins_semibold"
             android:textColor="@color/soft_gray"
             android:layout_marginTop="24dp"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@+id/cardAboutUs"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -360,6 +365,7 @@
             android:backgroundTint="@color/soft_gray"
             style="?attr/materialCardViewFilledStyle"
             android:orientation="horizontal"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@+id/accountSettingsMenu"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -427,6 +433,7 @@
             android:id="@+id/btnAnotherAccount"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:background="@drawable/another_account_btn"
             android:textColor="@color/soft_gray"

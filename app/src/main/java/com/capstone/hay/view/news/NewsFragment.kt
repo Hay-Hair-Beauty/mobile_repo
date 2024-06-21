@@ -5,18 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.capstone.hay.R
 import com.capstone.hay.adapter.NewsAdapter
 import com.capstone.hay.data.response.DataItem
 import com.capstone.hay.databinding.FragmentNewsBinding
 import com.capstone.hay.utils.CustomMarginItemDecoration
 import com.capstone.hay.view.ViewModelFactory
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.capstone.hay.R
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 
 class NewsFragment : Fragment() {
@@ -42,6 +41,31 @@ class NewsFragment : Fragment() {
         val itemDecoration = CustomMarginItemDecoration()
         binding.rvNews.addItemDecoration(itemDecoration)
 
+        viewModel.getAllArticle()
+        setupObserve()
+        setupActionBack()
+        setupSearchView()
+    }
+
+    private fun setupSearchView() {
+        binding.searchBar.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let {
+                    viewModel.getAllArticleByTitle(it)
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+
+
+        })
+    }
+
+
+    private fun setupObserve() {
         viewModel.articleResult.observe(viewLifecycleOwner) { result ->
             result.onSuccess {
                 setListData(it.data)
@@ -52,16 +76,36 @@ class NewsFragment : Fragment() {
             showLoading(it)
         }
 
+        viewModel.isShowTextNotFound.observe(viewLifecycleOwner) {
+            showTextNotFound(it)
+        }
+
         viewModel.snackbarText.observe(viewLifecycleOwner) { event ->
             event.getContentIfNotHandled()?.let { message ->
                 showSnackbar(message)
+
             }
         }
-        viewModel.getAllArticle()
+    }
+
+    private fun showTextNotFound(isShowText: Boolean) {
+        binding.textNotFound.visibility = if (isShowText) View.VISIBLE else View.GONE
+    }
+
+    private fun setupActionBack() {
+        val topAppBar: MaterialToolbar = binding.topAppBar
+        (requireActivity() as AppCompatActivity).setSupportActionBar(topAppBar)
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        topAppBar.setNavigationOnClickListener {
+            @Suppress("DEPRECATION")
+            requireActivity().onBackPressed()
+        }
     }
 
     private fun showSnackbar(message: String) {
-        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+        val snackbar = Snackbar.make(binding.newsFragment, message, Snackbar.LENGTH_LONG)
+        snackbar.anchorView = requireActivity().findViewById(R.id.nav_view)
+        snackbar.show()
     }
 
     private fun showLoading(isLoading: Boolean) {
@@ -77,8 +121,6 @@ class NewsFragment : Fragment() {
         })
         adapter.submitList(listNews)
         binding.rvNews.adapter = adapter
-
-
     }
 
     private fun showSelectedUser(news: DataItem) {

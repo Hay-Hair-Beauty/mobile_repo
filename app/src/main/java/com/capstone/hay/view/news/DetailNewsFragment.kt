@@ -1,20 +1,20 @@
 package com.capstone.hay.view.news
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LifecycleOwner
 import com.bumptech.glide.Glide
 import com.capstone.hay.R
+import com.capstone.hay.R.*
 import com.capstone.hay.data.response.DataItem
 import com.capstone.hay.databinding.FragmentDetailNewsBinding
 import com.capstone.hay.utils.formatTimestamp
 import com.capstone.hay.view.ViewModelFactory
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 
 class DetailNewsFragment : Fragment() {
@@ -37,8 +37,12 @@ class DetailNewsFragment : Fragment() {
 
         val newsId = DetailNewsFragmentArgs.fromBundle(requireArguments()).newsId
 
-        Log.d("DetailNewsFragment", newsId)
+        viewModel.getArticleById(newsId)
+        setupObserve()
+        setupActionBack()
+    }
 
+    private fun setupObserve() {
         viewModel.articleByIdResult.observe(viewLifecycleOwner) { result ->
             result.onSuccess {
                 setData(it)
@@ -54,8 +58,16 @@ class DetailNewsFragment : Fragment() {
                 showSnackbar(message)
             }
         }
+    }
 
-        viewModel.getArticleById(newsId)
+    private fun setupActionBack() {
+        val topAppBar: MaterialToolbar = binding.topAppBar
+        topAppBar.setNavigationIcon(drawable.ic_arrow_back)
+
+        topAppBar.setNavigationOnClickListener {
+            @Suppress("DEPRECATION")
+            requireActivity().onBackPressed()
+        }
     }
 
     private fun showSnackbar(message: String) {
@@ -63,7 +75,7 @@ class DetailNewsFragment : Fragment() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        binding.progresBar?.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding.progresBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         binding.thumbnailNews.visibility = if (isLoading) View.GONE else View.VISIBLE
         binding.titleNews.visibility = if (isLoading) View.GONE else View.VISIBLE
         binding.infoNewsLayout.visibility = if (isLoading) View.GONE else View.VISIBLE

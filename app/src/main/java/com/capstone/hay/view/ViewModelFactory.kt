@@ -6,17 +6,24 @@ import androidx.lifecycle.ViewModelProvider
 import com.capstone.hay.data.di.Injection
 import com.capstone.hay.data.repository.ArticleRepository
 import com.capstone.hay.data.repository.AuthRepository
+import com.capstone.hay.data.repository.HairIssueRepository
+import com.capstone.hay.data.repository.HistoryRepository
+import com.capstone.hay.view.forgot.ForgotPasswordMainView
+import com.capstone.hay.view.history.HistoryViewModel
 import com.capstone.hay.view.home.HomeViewModel
 import com.capstone.hay.view.login.LoginViewModel
 import com.capstone.hay.view.news.NewsViewModel
 import com.capstone.hay.view.profile.ProfileViewModel
 import com.capstone.hay.view.register.RegisterViewModel
+import com.capstone.hay.view.scan.ResultScanViewModel
 import com.capstone.hay.view.splash.SplashViewModel
 import com.capstone.hay.view.verification.VerificationViewModel
 
 class ViewModelFactory(
     private val authRepository: AuthRepository,
-    private val articleRepository: ArticleRepository
+    private val articleRepository: ArticleRepository,
+    private val hairIssueRepository: HairIssueRepository,
+    private val historyRepository: HistoryRepository
 ) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
@@ -43,6 +50,15 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(authRepository) as T
             }
+            modelClass.isAssignableFrom(ResultScanViewModel::class.java) -> {
+                ResultScanViewModel(hairIssueRepository) as T
+            }
+            modelClass.isAssignableFrom(HistoryViewModel::class.java) -> {
+                HistoryViewModel(historyRepository) as T
+            }
+            modelClass.isAssignableFrom(ForgotPasswordMainView::class.java) -> {
+                ForgotPasswordMainView(authRepository) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
@@ -55,7 +71,9 @@ class ViewModelFactory(
             return INSTANCE ?: synchronized(this) {
                 INSTANCE ?: ViewModelFactory(
                     Injection.provideAuthRepository(context),
-                    Injection.provideArticleRepository(context)
+                    Injection.provideArticleRepository(context),
+                    Injection.provideHairIssueRepository(context),
+                    Injection.provideHistoryRepository(context)
                 ).also { INSTANCE = it }
             }
         }
